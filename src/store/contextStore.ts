@@ -18,3 +18,32 @@ export const useCountContext = () => {
 
   return ctx;
 };
+
+//#region preferences
+
+// Preferences with read & write
+export type Preferences = {
+  language: "en" | "es" | "ja";
+  theme: "light" | "dark";
+};
+
+export type PreferencesCtx = {
+  preferences: Preferences;
+  setPreferences: React.Dispatch<React.SetStateAction<Preferences>>;
+};
+
+export const PreferencesContext = createContext<PreferencesCtx | null>(null);
+
+export const usePreferencesContext = () => {
+  const ctx = useContext(PreferencesContext);
+
+  if (!ctx) {
+    throw new Error(
+      "usePreferences must be used within <PreferencesContext ...>"
+    );
+  }
+
+  return ctx;
+};
+
+//#endregion

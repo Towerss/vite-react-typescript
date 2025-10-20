@@ -2,11 +2,20 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { CountContext } from "./store/contextStore";
+import { CountContext, PreferencesContext } from "./store/contextStore";
+import type { Preferences } from "./store/contextStore";
 import UseContextComp from "./UseContextComp";
+import UsePrefContextComp from "./UsePrefContextComp";
 
 function App() {
+  //
   const [count, setCount] = useState(0);
+
+  //
+  const [preferences, setPreferences] = useState<Preferences>({
+    language: "en",
+    theme: "light",
+  });
 
   return (
     <>
@@ -31,10 +40,21 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <div>
-        <p>Use Context component</p>
+        <p>Use Count Context component</p>
         <CountContext value={[count, setCount]}>
           <UseContextComp />
         </CountContext>
+      </div>
+      <div>
+        <p>Use Preferences Context component</p>
+        <PreferencesContext
+          value={{
+            preferences,
+            setPreferences,
+          }}
+        >
+          <UsePrefContextComp />
+        </PreferencesContext>
       </div>
     </>
   );

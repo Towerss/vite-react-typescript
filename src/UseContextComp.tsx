@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useCountContext } from "./store/contextStore";
 
 const UseContextComp = () => {
   const [countX, setCounts] = useCountContext();
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      console.log(`Current count: ${countX}`);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   return (
     <div>

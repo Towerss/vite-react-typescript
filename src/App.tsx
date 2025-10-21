@@ -6,6 +6,8 @@ import { CountContext, PreferencesContext } from "./store/contextStore";
 import type { Preferences } from "./store/contextStore";
 import UseContextComp from "./UseContextComp";
 import UsePrefContextComp from "./UsePrefContextComp";
+import FetchUser from "./Components/FetchUser";
+import CreatePost from "./Components/CreatePost";
 
 function App() {
   //
@@ -55,6 +57,13 @@ function App() {
         >
           <UsePrefContextComp />
         </PreferencesContext>
+      </div>
+
+      <div>
+        <FetchUser />
+      </div>
+      <div>
+        <CreatePost />
       </div>
     </>
   );
